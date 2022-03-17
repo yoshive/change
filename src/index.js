@@ -1,9 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CRUDTable,
+{
+  Fields,
+  Field,
+} from 'react-crud-table';
 
 let requests = [
   {
-    Id : Craig-213133,
+    Id : 213133,
     Item: 'Clothes',
     Destination:'Jakarta',
     Status:'Verifying'
@@ -37,9 +42,47 @@ const service = {
   },
 };
 
+const styles = {
+  container: { margin: 'auto', width: 'fit-content' },
+};
+
+const Example = () => (
+  <div style={styles.container}>
+    <CRUDTable
+      fetchItems={payload => service.fetchItems(payload)}
+    >
+      <Fields>
+        <Field
+          name="id"
+          label="Id"
+          hideInCreateForm
+          readOnly
+        />
+        <Field
+          name="Item"
+          label="Item"
+          placeholder="Item"
+        />
+        <Field
+          name="Destination"
+          label="Destination"
+          placeholder="Destination"
+        />
+        <Field
+          name="Status"
+          label="Status"
+          hideInCreateForm
+          readOnly
+          hideInUpdateForm
+        />
+      </Fields>
+      </CRUDTable>
+  </div>
+);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
