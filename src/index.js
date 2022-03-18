@@ -4,14 +4,18 @@ import CRUDTable,
 {
   Fields,
   Field,
+  CreateForm,
+  UpdateForm,
+  DeleteForm
 } from 'react-crud-table';
+import './index.css'
 
 let requests = [
   {
-    Id : 213133,
+    Id: 213133,
     Item: 'Clothes',
-    Destination:'Jakarta',
-    Status:'Verifying'
+    Destination: 'Jakarta',
+    Status: 'Verifying'
   },
 ];
 
@@ -46,7 +50,7 @@ const styles = {
   container: { margin: 'auto', width: 'fit-content' },
 };
 
-const Example = () => (
+const Table = () => (
   <div style={styles.container}>
     <CRUDTable
       fetchItems={payload => service.fetchItems(payload)}
@@ -76,15 +80,62 @@ const Example = () => (
           hideInUpdateForm
         />
       </Fields>
-      </CRUDTable>
+
+      <CreateForm
+        Item="Request Creation"
+        message="Create a new request!"
+        trigger="Create request"
+        onSubmit={request => service.create(request)}
+        submitText="Create"
+        validate={(values) => {
+          const errors = {};
+          if (!values.Item) {
+            errors.Item = 'Please, provide request\'s Item';
+          }
+
+          if (!values.Destination) {
+            errors.Destination = 'Please, provide request\'s Destination';
+          }
+
+          return errors;
+        }}
+      />
+
+      <UpdateForm
+        Item="Request Update Process"
+        message="Update Request"
+        trigger="Update"
+        onSubmit={request => service.update(request)}
+        submitText="Update"
+        validate={(values) => {
+          const errors = {};
+
+          if (!values.Item) {
+            errors.Item = 'Please, provide request\'s Item';
+          }
+
+          if (!values.Destination) {
+            errors.Destination = 'Please, provide request\'s Destination';
+          }
+
+
+          return errors;
+        }}
+      />
+
+      <DeleteForm
+        Item="Request Delete Process"
+        message="Are you sure you want to delete the request?"
+        trigger="Delete"
+        onSubmit={request => service.delete(request)}
+        submitText="Delete"
+      />
+    </CRUDTable>
   </div>
 );
 
 ReactDOM.render(
-  <React.StrictMode>
-    
-  </React.StrictMode>,
+  <Table />,
   document.getElementById('root')
 );
-
 

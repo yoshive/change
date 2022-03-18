@@ -1,0 +1,88 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.crud-table {
+    background-color: transparent;
+    border-collapse: collapse;
+    box-shadow: 2px 2px 5px 0 #c7c7c7;
+    margin-top: 15px;
+  }
+  
+  .crud-table__row 
+  .crud-table__header-cell {
+    cursor: pointer;
+    background: rgba(153, 158, 162, 0.05);
+    padding: 0.5rem 1rem;
+    color: rgba(0, 0, 0, 0.85);
+    border-left: 1px solid rgba(34, 36, 38, 0.1);
+    border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+  }
+  
+  .crud-table__header 
+  .crud-table__body {
+    background-color: #fff;
+  }
+  
+  .crud-table__cell {
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    border-left: 1px solid rgba(34, 36, 38, 0.1);
+    border-bottom: 1px solid rgba(4, 21, 37, 0.1);
+  }
+  
+  .crud-table__cell-label {
+    display: none;
+  }
+  
+  .crud-table-query-builder select,
+  .crud-table-query-builder input {
+    border-radius: 5px;
+    height: 30px;
+    border: 1px solid #ccc;
+    min-width: 150px;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    padding-left: 0.6rem;
+  }
+  
+  .crud-label {
+    display: inline-block;
+    border: 1px solid #e5e5e5;
+    padding: 0.48rem 1rem;
+    border-radius: 0.2rem;
+    background-color: #f9fafb;
+    font-size: 1.1rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.7rem;
+  }
+.crud-button {
+    min-height: 10pt;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    font-size: 12pt;
+    cursor: pointer;
+  }
+  
+  .crud-button--circular {
+    border-radius: 50%;
+    padding: 0;
+    width: 2rem;
+    line-height: 2rem;
+  }
+  
+  .crud-button--primary {
+    background-color: #2282cc;
+  }
+  
+  .crud-button--positive {
+    background-color: #581eb6;
+  }
+  
+  .crud-button--negative {
+    background-color: #cf1717;
+  }
+
+  
