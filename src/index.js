@@ -12,9 +12,17 @@ import './index.css'
 
 let requests = [
   {
-    Id: 213133,
-    Item: 'Clothes',
+    Id: 1,
+    Item: 'Package 1',
+    Qty: 3,
     Destination: 'Jakarta',
+    Status: 'Verifying'
+  },
+  {
+    Id: 2,
+    Item: 'Package 2',
+    Qty: 4,
+    Destination: 'Bandung',
     Status: 'Verifying'
   },
 ];
@@ -29,13 +37,14 @@ const service = {
     count += 1;
     requests.push({
       ...request,
-      id: count,
+      Id: count,
     });
     return Promise.resolve(request);
   },
   update: (data) => {
     const request = requests.find(t => t.Id === data.Id);
     request.Item = data.Item;
+    request.Qty =  data.Qty;
     request.Destination = data.Destination;
     return Promise.resolve(request);
   },
@@ -67,6 +76,11 @@ const Table = () => (
           label="Item"
           placeholder="Item"
         />
+         <Field
+          name="Qty"
+          label="Qty"
+          placeholder="Qty"
+        />
         <Field
           name="Destination"
           label="Destination"
@@ -84,13 +98,17 @@ const Table = () => (
       <CreateForm
         Item="Request Creation"
         message="Create a new request!"
-        trigger="Create request"
+        trigger="New request"
         onSubmit={request => service.create(request)}
         submitText="Create"
         validate={(values) => {
           const errors = {};
           if (!values.Item) {
             errors.Item = 'Please, provide request\'s Item';
+          }
+
+          if (!values.Qty) {
+            errors.Item = 'Please, provide request\'s Quantity';
           }
 
           if (!values.Destination) {
@@ -112,6 +130,10 @@ const Table = () => (
 
           if (!values.Item) {
             errors.Item = 'Please, provide request\'s Item';
+          }
+
+          if (!values.Qty) {
+            errors.Item = 'Please, provide request\'s Quantity';
           }
 
           if (!values.Destination) {
