@@ -34,14 +34,14 @@ const service = {
     return Promise.resolve(request);
   },
   update: (data) => {
-    const request = requests.find(t => t.id === data.id);
+    const request = requests.find(t => t.Id === data.Id);
     request.Item = data.Item;
     request.Destination = data.Destination;
     return Promise.resolve(request);
   },
   delete: (data) => {
-    const request = requests.find(t => t.id === data.id);
-    requests = requests.filter(t => t.id !== request.id);
+    const request = requests.find(t => t.Id === data.Id);
+    requests = requests.filter(t => t.Id !== request.Id);
     return Promise.resolve(request);
   },
 };
@@ -57,7 +57,7 @@ const Table = () => (
     >
       <Fields>
         <Field
-          name="id"
+          name="Id"
           label="Id"
           hideInCreateForm
           readOnly
